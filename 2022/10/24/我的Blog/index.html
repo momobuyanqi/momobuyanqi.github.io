@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="MOMO">
+
+
+
+
+
+<title>我的Blog | Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">MOMO&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">MOMO&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    var tocbot_timer;
+    var DEPTH_MAX = 6; // 为 6 时展开所有
+    var tocbot_default_config = {
+        tocSelector: '.tocbot-list',
+        contentSelector: '.post-content',
+        headingSelector: 'h1, h2, h3, h4, h5',
+        orderedList: false,
+        scrollSmooth: true,
+        onClick: extend_click,
+    };
+
+    function extend_click() {
+        clearTimeout(tocbot_timer);
+        tocbot_timer = setTimeout(function() {
+            tocbot.refresh(obj_merge(tocbot_default_config, {
+                hasInnerContainers: true
+            }));
+        }, 420); // 这个值是由 tocbot 源码里定义的 scrollSmoothDuration 得来的
+    }
+
+    document.ready(function() {
+        tocbot.init(obj_merge(tocbot_default_config, {
+            collapseDepth: 1
+        }));
+    });
+
+    function expand_toc() {
+        var b = document.querySelector('.tocbot-toc-expand');
+        var expanded = b.getAttribute('data-expanded');
+        expanded ? b.removeAttribute('data-expanded') : b.setAttribute('data-expanded', true);
+        tocbot.refresh(obj_merge(tocbot_default_config, {
+            collapseDepth: expanded ? 1 : DEPTH_MAX
+        }));
+        b.innerText = expanded ? 'Expand all' : 'Collapse all';
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    function obj_merge(target, source) {
+        for (var item in source) {
+            if (source.hasOwnProperty(item)) {
+                target[item] = source[item];
+            }
+        }
+        return target;
+    }
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">我的Blog</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">MOMO</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">October 24, 2022&nbsp;&nbsp;18:20:22</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="这是我第一篇Blog"><a href="#这是我第一篇Blog" class="headerlink" title="这是我第一篇Blog"></a>这是我第一篇Blog</h1><h1 id="TheCave清课知识图谱"><a href="#TheCave清课知识图谱" class="headerlink" title="TheCave清课知识图谱"></a>TheCave清课知识图谱</h1><hr>
+<h1 id="今日学思笔记关键词"><a href="#今日学思笔记关键词" class="headerlink" title="今日学思笔记关键词"></a>今日学思笔记关键词</h1><ul>
+<li>今天是2022年的第44周</li>
+<li>Break Timer</li>
+</ul>
+<hr>
+<h1 id="今日Todo-List"><a href="#今日Todo-List" class="headerlink" title="今日Todo List"></a>今日Todo List</h1><ul>
+<li><input disabled="" type="checkbox"> 每日汉字</li>
+<li><input disabled="" type="checkbox"> 每日英语</li>
+<li><input disabled="" type="checkbox"> 每日打字</li>
+</ul>
+<hr>
+<h1 id="今日记事"><a href="#今日记事" class="headerlink" title="今日记事"></a>今日记事</h1><p>&#x3D;&#x3D;## 小区非法管控&#x3D;&#x3D;</p>
+<h2 id="静默管理"><a href="#静默管理" class="headerlink" title="静默管理"></a>静默管理</h2><ul>
+<li><p>静默管理的主要内容可以概括为三个“暂停”和三个“不”。</p>
+</li>
+<li><p>三个“暂停”是指，除参与防疫工作的人员之外，所有行政事业单位人员全部居家办公；除相关重点企业、保障民生的公共服务类企业之外，所有经营性场所暂停营业；除具备条件的农贸市场、商超、药店、医院等外，其他商户暂停营业；公交车、出租车、网约车停运。</p>
+</li>
+<li><p>三个“不”是指，居民不聚集、不流动、不出门。</p>
+</li>
+</ul>
+<hr>
+<h1 id="今日记学（温故知新学术笔记）"><a href="#今日记学（温故知新学术笔记）" class="headerlink" title="今日记学（温故知新学术笔记）"></a>今日记学（温故知新学术笔记）</h1><p>![[D2D8D1EC-D49E-4F83-B4BE-62DB117360E6.jpeg]]</p>
+<p>![[71B006C3-6131-43F0-BE39-ED56AE5029CC.jpeg]]</p>
+<h2 id="商君书-商鞅"><a href="#商君书-商鞅" class="headerlink" title="商君书  商鞅"></a>商君书  商鞅</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">- 商鞅颁行新法前为取信于民，派人在国都后边市场的南门竖起一根三丈长的木头，招募百姓中能把木头搬到北门的人立即获得赏金十两。百姓们都感到很诧异，没有人去搬。后商鞅将赏金追加至五十两，终于有个人将木头搬到北门，果然获得赏金五十两。商鞅借此表明令出必行，绝不欺骗，史称“[徙木立信](https://zh.wikipedia.org/w/index.php?title=%E5%BE%99%E6%9C%A8%E7%AB%8B%E4%BF%A1&amp;action=edit&amp;redlink=1 &quot;徙木立信（页面不存在）&quot;)”</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<pre><code><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">《商君书》驭民五术，如下：</span><br><span class="line"></span><br><span class="line">1，愚民：统一思想。</span><br><span class="line"></span><br><span class="line">2，弱民：国强民弱，治国之道，务在弱民。</span><br><span class="line"></span><br><span class="line">3，疲民：为民寻事，疲于奔命，使民无瑕顾及他事。</span><br><span class="line"></span><br><span class="line">4，辱民：一是无自尊自信；二是唆之相互检举揭发，终日生活于恐惧氛围中。</span><br><span class="line"></span><br><span class="line">5，贫民：除了生活必须，剥夺余银余财（即通货膨胀或狂印钞票）；人穷志短。</span><br><span class="line"></span><br><span class="line">五者若不灵，杀之。</span><br></pre></td></tr></table></figure>
+</code></pre>
+<h2 id="hexo-blog安装配置"><a href="#hexo-blog安装配置" class="headerlink" title="hexo blog安装配置"></a>hexo blog安装配置</h2><h3 id="安装前提"><a href="#安装前提" class="headerlink" title="安装前提"></a>安装前提</h3><ul>
+<li>Node.js  </li>
+<li>Git</li>
+<li>hexo的安装文档： <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">https://hexo.io/zh-cn/docs/</a></li>
+<li>安装Git -   Mac：下载 <a target="_blank" rel="noopener" href="http://sourceforge.net/projects/git-osx-installer/">安装程序</a>。</li>
+<li>在官网下载安装 Node.js</li>
+</ul>
+<h3 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h3><ul>
+<li>&#x3D;&#x3D;Mac用户注意了，要使用管理员权限&#x3D;&#x3D;，首先：“sudo -s”，回车，输入密码，再回车，然后：“npm install -g hexo-cli”，回车，等待下载安装即可！</li>
+<li>所有必备的应用程序安装完成后，即可使用 npm 安装 Hexo。  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li>NPM是随NodeJS一起安装的包管理工具</li>
+<li></li>
+</ul>
+<p>![[截屏2022-10-24 17.09.45.png]]</p>
+<ul>
+<li>检查hexo是否安装成功<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo -v</span><br></pre></td></tr></table></figure></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">bash-3.2# hexo -v</span><br><span class="line"></span><br><span class="line">hexo-cli: 4.3.0</span><br><span class="line"></span><br><span class="line">os: darwin 21.5.0 12.4</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">node: 19.0.0</span><br><span class="line"></span><br><span class="line">v8: 10.7.193.13-node.16</span><br><span class="line"></span><br><span class="line">uv: 1.43.0</span><br><span class="line"></span><br><span class="line">zlib: 1.2.11</span><br><span class="line"></span><br><span class="line">brotli: 1.0.9</span><br><span class="line"></span><br><span class="line">ares: 1.18.1</span><br><span class="line"></span><br><span class="line">modules: 111</span><br><span class="line"></span><br><span class="line">nghttp2: 1.47.0</span><br><span class="line"></span><br><span class="line">napi: 8</span><br><span class="line"></span><br><span class="line">llhttp: 8.1.0</span><br><span class="line"></span><br><span class="line">openssl: 3.0.5+quic</span><br><span class="line"></span><br><span class="line">cldr: 41.0</span><br><span class="line"></span><br><span class="line">icu: 71.1</span><br><span class="line"></span><br><span class="line">tz: 2022b</span><br><span class="line"></span><br><span class="line">unicode: 14.0</span><br><span class="line"></span><br><span class="line">ngtcp2: 0.8.1</span><br><span class="line"></span><br><span class="line">nghttp3: 0.7.0</span><br><span class="line"></span><br><span class="line">bash-3.2#</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置Blog"><a href="#配置Blog" class="headerlink" title="配置Blog"></a>配置Blog</h3><ul>
+<li><p>准备 Blog文件夹</p>
+</li>
+<li><p>在访达&#x2F;文档建一个hexo文件夹，右键选中“新建位于文件夹位置的终端窗口”</p>
+</li>
+<li><p>执行以下命令：</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>hexo文件夹里形成了Blog的站点所需的各种文件夹</p>
+</li>
+<li><p>执行以下命令：</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate  //可以简写成 hexo g</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>生成静态网站</p>
+</li>
+<li><p>执行命令hexo s启动网站</p>
+</li>
+</ul>
+<h3 id="写作Blog"><a href="#写作Blog" class="headerlink" title="写作Blog"></a>写作Blog</h3><ul>
+<li>新建文章命令：  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo n &quot;我的博客&quot;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h1 id="Skill寸进"><a href="#Skill寸进" class="headerlink" title="Skill寸进"></a>Skill寸进</h1><ul>
+<li><input disabled="" type="checkbox"> 钢琴技能</li>
+<li><input disabled="" type="checkbox"> 数字音乐</li>
+<li><input disabled="" type="checkbox"> 3D（shapr3D）(Blender)</li>
+<li><input disabled="" type="checkbox"> 2D Live2D</li>
+<li><input disabled="" type="checkbox"> Metaverse生产力工具（虚拟博物馆 虚拟教室）</li>
+<li><input disabled="" type="checkbox"> 定格动画</li>
+<li><input disabled="" type="checkbox"> 传拓</li>
+<li><input disabled="" type="checkbox"> 摹帖</li>
+<li><input disabled="" type="checkbox"> 种花</li>
+<li><input disabled="" type="checkbox"> Podcast</li>
+<li><input disabled="" type="checkbox"> 素描</li>
+<li><input disabled="" type="checkbox"> 编程</li>
+<li><input disabled="" type="checkbox"> </li>
+</ul>
+<hr>
+<h1 id="治生-amp-创业"><a href="#治生-amp-创业" class="headerlink" title="治生&amp;创业"></a>治生&amp;创业</h1><ul>
+<li>Good idea<ul>
+<li>卖拓片</li>
+<li>石器</li>
+</ul>
+</li>
+<li>商业案例学习</li>
+</ul>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>MOMO</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://example.com/2022/10/24/%E6%88%91%E7%9A%84Blog/">http://example.com/2022/10/24/%E6%88%91%E7%9A%84Blog/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2022/10/24/momo%E7%9A%84%E7%AC%AC2%E7%AF%87Blog/">momo的第2篇Blog</a>
+            
+            
+            <a class="next" rel="next" href="/2022/10/24/hello-world/">Hello World</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© MOMO | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>
