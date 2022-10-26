@@ -13,7 +13,7 @@
 
 
 
-<title>2022-10-26hexo3日课 | Hexo</title>
+<title>2022年10月26号我的Hexo Blog上线了 | Hexo</title>
 
 
 
@@ -127,11 +127,76 @@
                 <div class="container">
     
     
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    var tocbot_timer;
+    var DEPTH_MAX = 6; // 为 6 时展开所有
+    var tocbot_default_config = {
+        tocSelector: '.tocbot-list',
+        contentSelector: '.post-content',
+        headingSelector: 'h1, h2, h3, h4, h5',
+        orderedList: false,
+        scrollSmooth: true,
+        onClick: extend_click,
+    };
+
+    function extend_click() {
+        clearTimeout(tocbot_timer);
+        tocbot_timer = setTimeout(function() {
+            tocbot.refresh(obj_merge(tocbot_default_config, {
+                hasInnerContainers: true
+            }));
+        }, 420); // 这个值是由 tocbot 源码里定义的 scrollSmoothDuration 得来的
+    }
+
+    document.ready(function() {
+        tocbot.init(obj_merge(tocbot_default_config, {
+            collapseDepth: 1
+        }));
+    });
+
+    function expand_toc() {
+        var b = document.querySelector('.tocbot-toc-expand');
+        var expanded = b.getAttribute('data-expanded');
+        expanded ? b.removeAttribute('data-expanded') : b.setAttribute('data-expanded', true);
+        tocbot.refresh(obj_merge(tocbot_default_config, {
+            collapseDepth: expanded ? 1 : DEPTH_MAX
+        }));
+        b.innerText = expanded ? 'Expand all' : 'Collapse all';
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    function obj_merge(target, source) {
+        for (var item in source) {
+            if (source.hasOwnProperty(item)) {
+                target[item] = source[item];
+            }
+        }
+        return target;
+    }
+</script>
+    
 
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">2022-10-26hexo3日课</h1>
+            <h1 class="post-title">2022年10月26号我的Hexo Blog上线了</h1>
             
                 <div class="post-meta">
                     
@@ -140,7 +205,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">October 26, 2022&nbsp;&nbsp;16:14:49</a>
+                        Date: <a href="#">October 26, 2022&nbsp;&nbsp;17:18:26</a>
                         </span>
                     
                     
@@ -149,7 +214,12 @@
         </header>
 
         <div class="post-content">
-            <p>momo第三课hexo</p>
+            <h2 id="我的第一篇Hexo-Blog"><a href="#我的第一篇Hexo-Blog" class="headerlink" title="我的第一篇Hexo Blog"></a>我的第一篇Hexo Blog</h2><ul>
+<li>昨天晚上部署Github忙到快23点，差点被封在门外回不了家。</li>
+<li>今天又冒死去The Cave Museum写Blog</li>
+<li>今天17点11分第一篇Blog正式上线！</li>
+<li>赞一下兵荒马乱中刻苦读书的momo,卷死这个世界!</li>
+</ul>
 
         </div>
 
@@ -164,7 +234,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="http://example.com/2022/10/26/2022-10-26hexo3%E6%97%A5%E8%AF%BE/">http://example.com/2022/10/26/2022-10-26hexo3%E6%97%A5%E8%AF%BE/</a></span>
+                        <span><a href="http://example.com/2022/10/26/2022%E5%B9%B410%E6%9C%8826%E5%8F%B7%E6%88%91%E7%9A%84Hexo-Blog%E4%B8%8A%E7%BA%BF%E4%BA%86/">http://example.com/2022/10/26/2022%E5%B9%B410%E6%9C%8826%E5%8F%B7%E6%88%91%E7%9A%84Hexo-Blog%E4%B8%8A%E7%BA%BF%E4%BA%86/</a></span>
                     </p>
                 
                 
@@ -197,10 +267,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2022/10/26/2022%E5%B9%B410%E6%9C%8826%E5%8F%B7%E6%88%91%E7%9A%84Hexo-Blog%E4%B8%8A%E7%BA%BF%E4%BA%86/">2022年10月26号我的Hexo Blog上线了</a>
             
-            
-            <a class="next" rel="next" href="/2022/10/25/2022-10-25%E6%97%A5%E8%AF%BE-hexo%E5%AE%89%E8%A3%85/">2022-10-25日课&hexo安装</a>
+            <a class="next" rel="next" href="/2022/10/26/2022-10-26hexo3%E6%97%A5%E8%AF%BE/">2022-10-26hexo3日课</a>
             
         </section>
 
