@@ -127,6 +127,71 @@
                 <div class="container">
     
     
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    var tocbot_timer;
+    var DEPTH_MAX = 6; // 为 6 时展开所有
+    var tocbot_default_config = {
+        tocSelector: '.tocbot-list',
+        contentSelector: '.post-content',
+        headingSelector: 'h1, h2, h3, h4, h5',
+        orderedList: false,
+        scrollSmooth: true,
+        onClick: extend_click,
+    };
+
+    function extend_click() {
+        clearTimeout(tocbot_timer);
+        tocbot_timer = setTimeout(function() {
+            tocbot.refresh(obj_merge(tocbot_default_config, {
+                hasInnerContainers: true
+            }));
+        }, 420); // 这个值是由 tocbot 源码里定义的 scrollSmoothDuration 得来的
+    }
+
+    document.ready(function() {
+        tocbot.init(obj_merge(tocbot_default_config, {
+            collapseDepth: 1
+        }));
+    });
+
+    function expand_toc() {
+        var b = document.querySelector('.tocbot-toc-expand');
+        var expanded = b.getAttribute('data-expanded');
+        expanded ? b.removeAttribute('data-expanded') : b.setAttribute('data-expanded', true);
+        tocbot.refresh(obj_merge(tocbot_default_config, {
+            collapseDepth: expanded ? 1 : DEPTH_MAX
+        }));
+        b.innerText = expanded ? 'Expand all' : 'Collapse all';
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    function obj_merge(target, source) {
+        for (var item in source) {
+            if (source.hasOwnProperty(item)) {
+                target[item] = source[item];
+            }
+        }
+        return target;
+    }
+</script>
+    
 
     
     <article class="post-wrap">
@@ -149,7 +214,46 @@
         </header>
 
         <div class="post-content">
-            
+            <h1 id="2023-09-04-日课"><a href="#2023-09-04-日课" class="headerlink" title="2023-09-04 日课"></a>2023-09-04 日课</h1><p>created:2023-09-04-周一-247日-36周08:58</p>
+<h1 id="2023-08-14-室内设计师脚手架-To-Do-List"><a href="#2023-08-14-室内设计师脚手架-To-Do-List" class="headerlink" title="![[2023-08-14 室内设计师脚手架#To Do List]]"></a>![[2023-08-14 室内设计师脚手架#To Do List]]</h1><h1 id="36周To-Do-List"><a href="#36周To-Do-List" class="headerlink" title="36周To Do List"></a>36周To Do List</h1><ul>
+<li><input disabled="" type="checkbox"> Hexo部署到github上</li>
+<li><input disabled="" type="checkbox"> 洗爷爷的老底片，并且留一份洗出来的底片</li>
+<li><input disabled="" type="checkbox"> 问爷爷卖不卖他的底片？收一张</li>
+<li><input disabled="" type="checkbox"> 一间自己的暗房Workshop网站</li>
+<li><input disabled="" type="checkbox"> The Cave Museum 优化比如万兆网隐形光鲜布线</li>
+<li><input disabled="" type="checkbox"> 一间自然的房间，继续装修。</li>
+<li><input disabled="" type="checkbox"> 超大画幅相机</li>
+<li><input disabled="" type="checkbox"> 补课</li>
+<li><input disabled="" type="checkbox"> 要拿本学期的课本</li>
+</ul>
+<h1 id="hexo"><a href="#hexo" class="headerlink" title="hexo"></a>hexo</h1><h2 id="查询hexo是否安装"><a href="#查询hexo是否安装" class="headerlink" title="查询hexo是否安装"></a>查询hexo是否安装</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
+<p>系统回馈</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">wangyongdeiMac:~ momo$ hexo -v</span><br><span class="line">hexo-cli: 4.3.0</span><br><span class="line">os: darwin 21.5.0 12.4</span><br><span class="line"></span><br><span class="line">node: 19.0.0</span><br><span class="line">v8: 10.7.193.13-node.16</span><br><span class="line">uv: 1.43.0</span><br><span class="line">zlib: 1.2.11</span><br><span class="line">brotli: 1.0.9</span><br><span class="line">ares: 1.18.1</span><br><span class="line">modules: 111</span><br><span class="line">nghttp2: 1.47.0</span><br><span class="line">napi: 8</span><br><span class="line">llhttp: 8.1.0</span><br><span class="line">openssl: 3.0.5+quic</span><br><span class="line">cldr: 41.0</span><br><span class="line">icu: 71.1</span><br><span class="line">tz: 2022b</span><br><span class="line">unicode: 14.0</span><br><span class="line">ngtcp2: 0.8.1</span><br><span class="line">nghttp3: 0.7.0</span><br><span class="line">wangyongdeiMac:~ momo$ </span><br></pre></td></tr></table></figure>
+
+<h2 id="启动hexo"><a href="#启动hexo" class="headerlink" title="启动hexo"></a>启动hexo</h2><p>在访达hexo文件夹进入终端</p>
+<p>![[截屏2023-09-04 10.41.53.png]]<br>输入命令pwd回车( _pwd_（英文全拼：print work directory）命令用于显示工作目录。执行pwd 指令可立刻得知您目前所在的工作目录的绝对路径名称。)</p>
+<p>查看当前路径</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wangyongdeiMac:hexo momo$ pwd</span><br><span class="line">/Users/momo/Documents/hexo</span><br><span class="line">wangyongdeiMac:hexo momo$ </span><br></pre></td></tr></table></figure>
+
+<p>执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+
+<p>在server千万不要加（-）可简写</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+
+<h2 id="增加一篇新文章"><a href="#增加一篇新文章" class="headerlink" title="增加一篇新文章"></a>增加一篇新文章</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new “文章标题”</span><br></pre></td></tr></table></figure>
+
+<p>&#x3D;&#x3D;切记new后面要加空格！！！要用英文引号！！！&#x3D;&#x3D;</p>
+<h2 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure>
+<p>也可简写为hexo g</p>
+<h2 id="部署到github上"><a href="#部署到github上" class="headerlink" title="部署到github上"></a>部署到github上</h2><p>部署 部署您的网站。</p>
+<hr>
+<h1 id="hexo-help"><a href="#hexo-help" class="headerlink" title="hexo -help"></a>hexo -help</h1><p>Commands:<br>  clean     Remove generated files and cache.<br>  config    Get or set configurations.<br>  deploy    Deploy your website.<br>  generate  Generate static files.<br>  help      Get help on a command.<br>  init      Create a new Hexo folder.<br>  list      List the information of the site<br>  migrate   Migrate your site from other system to Hexo.<br>  new       Create a new post.<br>  publish   Moves a draft post from _drafts to _posts folder.<br>  render    Render files with renderer plugins.<br>  server    Start the server.<br>  version   Display version information.</p>
+<p>Global Options:<br>  –config  Specify config file instead of using _config.yml<br>  –cwd     Specify the CWD<br>  –debug   Display all verbose messages in the terminal<br>  –draft   Display draft posts<br>  –safe    Disable all plugins and scripts<br>  –silent  Hide output on console</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ol>
+<li></li>
+</ol>
+
         </div>
 
         
